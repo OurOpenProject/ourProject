@@ -19,7 +19,7 @@ public class Api {
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("")
+                .baseUrl("http://api.izhangchu.com")
                 .build();
         apiService = retrofit.create(ApiService.class);
     }
