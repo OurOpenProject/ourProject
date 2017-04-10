@@ -9,4 +9,10 @@ import retrofit2.http.HEAD;
  */
 
 public class ApiService {
+    //book
+
+    //lh
+
+
+    //sq
 }
