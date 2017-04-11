@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <!-- 食谱/推荐 -->
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBg">#e2e2e2</color>
+    <color name="colorImgBg">#dcd8d8</color>
 </resources>
