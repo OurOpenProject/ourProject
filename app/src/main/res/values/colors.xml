@@ -11,4 +11,5 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorBg">#e2e2e2</color>
     <color name="colorImgBg">#dcd8d8</color>
+    <color name="bcolorTextBg">#f75e0b</color>
 </resources>
