@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/x10">
+    <!--
+        Book --> Banner -->详情页中，
+        点赞 布局
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y25"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/banner_dianzan_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="赞美是一种美德，点个赞呗"
+            android:textColor="#000000"/>
+        <ImageView
+            android:id="@+id/banner_dianzan_image"
+            android:layout_width="@dimen/y25"
+            android:layout_height="@dimen/y25"
+            android:src="@drawable/ic_card_like_selector"
+            android:padding="@dimen/x5"
+            android:layout_marginLeft="@dimen/x20"
+            android:clickable="true"/>
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/banner_dianzan_list_user"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y35"
+        android:numColumns="7"/>
+
+</LinearLayout>

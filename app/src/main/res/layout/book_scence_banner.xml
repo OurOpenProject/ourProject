@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y124"
+    android:orientation="vertical"
+    android:background="@color/colorBg">
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y90">
+
+    </com.youth.banner.Banner>
+
+    <LinearLayout
+        android:id="@+id/banner_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y25"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:layout_marginTop="@dimen/x5"
+        android:padding="@dimen/x5"
+        android:background="@drawable/banner_search_bg">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="输入食材或菜名搜索"
+            android:textSize="12sp"
+            android:drawableLeft="@mipmap/ic_index_search"
+            android:drawablePadding="@dimen/x10"
+            android:gravity="center"/>
+    </LinearLayout>
+</LinearLayout>

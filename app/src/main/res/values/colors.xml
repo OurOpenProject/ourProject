@@ -10,10 +10,13 @@
     <color name="colorYellow">#EB431F</color>
     <color name="colorWhite1">#faf6f6</color>
     <color name="colorGrey">#e7e6e6</color>
+    <color name="colorTime">#b9b8b8</color>
+    <color name="colorBlack">#dadace</color>
 
 
     <!-- 食谱/推荐 -->
     <color name="colorWhite">#ffffff</color>
     <color name="colorBg">#e2e2e2</color>
     <color name="colorImgBg">#dcd8d8</color>
+    <color name="bcolorTextBg">#f75e0b</color>
 </resources>

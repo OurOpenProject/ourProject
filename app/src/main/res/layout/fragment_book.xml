@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y40">
+        <ImageView
+            android:id="@+id/book_zxing"
+            android:layout_width="@dimen/y48"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_zxing"
+            android:padding="@dimen/x15"/>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/book_tablayout"
+            android:layout_width="@dimen/x180"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            app:tabTextAppearance="@style/BookTabLayoutAppearance"
+            app:tabIndicatorColor="#fa8e09"
+            app:tabIndicatorHeight="2dp">
+
+        </android.support.design.widget.TabLayout>
+
+        <ImageView
+            android:id="@+id/book_search"
+            android:layout_width="@dimen/y48"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_search_icon"
+            android:padding="@dimen/x15"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/book_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+
+</LinearLayout>
