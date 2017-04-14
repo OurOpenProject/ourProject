@@ -11,8 +11,19 @@ import com.ourproject.ui.book.bean.secondary.scencehome.banner.videohome.BannerB
 import java.util.Map;
 
 import retrofit2.Call;
+import com.ourproject.ui.sq.bean.DRBean;
+import com.ourproject.ui.sq.bean.FSBean;
+import com.ourproject.ui.sq.bean.SqBean;
+import com.ourproject.ui.sq.bean.TuiJanDetailBean;
+import com.ourproject.ui.sq.bean.ZPBean;
+import com.ourproject.ui.sq.bean.ZXBean;
+
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
+import retrofit2.http.HEAD;
+import retrofit2.http.Query;
+import rx.Observable;
 
 /**
  * Created by admin on 2017/4/9.
@@ -53,4 +64,25 @@ public interface ApiService {
 
 
     //sq
+    //http://api.izhangchu.com/?methodName=ShequRecommend&version=4.40
+    @GET("/?methodName=ShequRecommend&version=4.40")
+    Observable<SqBean> getSqList();
+
+    //http://api.izhangchu.com/?is_marrow=0&methodName=ShequList&last_id=0&version=4.40&page=2&size=20
+    @GET("/?is_marrow=0&methodName=ShequList&last_id=0&version=4.40")
+    Observable<ZXBean> getZxList(@Query("page") String page, @Query("size") String size);
+
+    //http://api.izhangchu.com/?methodName=UserInfo&version=4.40&visitor_id=1842643
+    @GET("/?methodName=UserInfo&version=4.40")
+    Observable<DRBean> getDrBean(@Query("visitor_id") String vid);
+
+    @GET("?methodName=ShequUlist&version=4.40")
+    Observable<ZPBean> getZpBean(@Query("visitor_id") String vid, @Query("page") String page, @Query("size") String size);
+
+    @GET("?methodName=ShequPostview&version=4.40")
+    Observable<TuiJanDetailBean> getTj(@Query("post_id") String postId);
+
+    @GET("?methodName=FensiList&version=4.40")
+    Observable<FSBean> getFsBean(@Query("user_id_target") String vid, @Query("page") String page, @Query("size") String size);
+
 }
