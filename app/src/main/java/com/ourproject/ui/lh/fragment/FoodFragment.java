@@ -1,5 +1,6 @@
 package com.ourproject.ui.lh.fragment;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +10,10 @@ import android.util.Log;
 import com.ourproject.R;
 import com.ourproject.R2;
 import com.ourproject.base.BaseFragment;
+import com.ourproject.ui.lh.activity.FoodDetailActivity;
 import com.ourproject.ui.lh.adapter.FoodAdapter;
 import com.ourproject.ui.lh.bean.FoodBean;
+import com.ourproject.ui.lh.callback.OnRecClickListener;
 import com.ourproject.ui.lh.contract.FoodContract;
 import com.ourproject.ui.lh.mode.FoodMode;
 import com.ourproject.ui.lh.presenter.FoodPresenter;
@@ -24,7 +27,7 @@ import butterknife.BindView;
  */
 
 
-public class FoodFragment extends BaseFragment<FoodPresenter,FoodMode> implements FoodContract.FoodView, SwipeRefreshLayout.OnRefreshListener {
+public class FoodFragment extends BaseFragment<FoodPresenter,FoodMode> implements FoodContract.FoodView, SwipeRefreshLayout.OnRefreshListener, OnRecClickListener {
     int page=1;
     int count=20;
 
@@ -35,6 +38,7 @@ public class FoodFragment extends BaseFragment<FoodPresenter,FoodMode> implement
     private FoodAdapter adapter;
     private List<FoodBean.DataBeanX.DataBean> data;
     private boolean isLoad;
+    private LinearLayoutManager manager;
 
     @Override
     protected int getLayoutId() {
@@ -53,33 +57,32 @@ public class FoodFragment extends BaseFragment<FoodPresenter,FoodMode> implement
     public void initView() {
         Log.e("1024", "initView: " );
         adapter = new FoodAdapter(null,getActivity());
-        final LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        adapter.setOnRecClickListener(this);
+        manager = new LinearLayoutManager(getActivity());
         swip.setOnRefreshListener(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rec.setLayoutManager(manager);
         rec.setAdapter(adapter);
         rec.addOnScrollListener(new OnScrollListener() {
 
-            private LinearLayoutManager manager;
+
+            private int lastVisibleItemPosition;
 
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                int lastVIsibleItem = manager.findLastVisibleItemPosition();
-                int itemCount = manager.getItemCount();
-                if(lastVIsibleItem>=itemCount-4&&newState==RecyclerView.SCROLL_STATE_IDLE){
-                    mPresenter.getFoodBeanList(++page,20);
-                    isLoad=true;
-
-                }
+               if(newState==RecyclerView.SCROLL_STATE_IDLE && lastVisibleItemPosition==adapter.getItemCount()-1){
+                   mPresenter.getFoodBeanList(++page,20);
+                   isLoad=true;
+               }
 
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                manager = (LinearLayoutManager) recyclerView.getLayoutManager();
-
+                manager.findLastVisibleItemPosition();
+                lastVisibleItemPosition = manager.findLastVisibleItemPosition();
             }
         });
 
@@ -119,5 +122,15 @@ public class FoodFragment extends BaseFragment<FoodPresenter,FoodMode> implement
     public void onRefresh() {
         mPresenter.getFoodBeanList(0,count);
         isLoad=false;
+    }
+
+    @Override
+    public void onItemClick(RecyclerView recyclerView, int position) {
+        FoodBean.DataBeanX.DataBean item = adapter.getItem(position);
+        int series_id = item.getSeries_id();
+        Intent intent=new Intent(getActivity(),FoodDetailActivity.class);
+        intent.putExtra("series_id",series_id);
+        Log.e("点击事件传过去的值", "onItemClick: "+series_id );
+        startActivity(intent);
     }
 }

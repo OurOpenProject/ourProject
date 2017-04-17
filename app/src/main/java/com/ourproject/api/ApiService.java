@@ -1,6 +1,7 @@
 package com.ourproject.api;
 
 import com.ourproject.ui.lh.bean.FoodBean;
+import com.ourproject.ui.lh.bean.FoodDetailBottomList;
 
 import com.ourproject.ui.book.bean.category.CategoryIndexBean;
 import com.ourproject.ui.book.bean.material.MaterialSubtypeBean;
@@ -39,6 +40,10 @@ public interface ApiService {
 
 
     //lh
+    //food list http://api.izhangchu.com/?methodName=CourseIndex&page=1&size=20&version=4.40
+    @GET("/?methodName=CourseIndex&version=4.40")
+    Observable<FoodBean> getFoodBeanList(@Query("page") int page,@Query("size") int  size );
+
 
 
     //sq

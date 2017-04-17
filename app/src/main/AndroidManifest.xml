@@ -19,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.lh.lianxi.LianxiActivity" />
+        <activity android:name=".ui.lh.activity.FoodDetailActivity"></activity>
         <activity android:name=".ui.sq.activity.DaRenActivity" />
         <activity android:name=".ui.sq.activity.TuiJanDetailActivity"></activity>
         <activity android:name=".ui.book.activity.QR_codeActivity" />
